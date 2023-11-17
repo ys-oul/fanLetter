@@ -1,12 +1,14 @@
 import React from "react";
-import Header from "../shared/Header";
 import Send from "../components/Send";
+import Detail from "../components/Letters";
+import "../shared/reset.css";
+import Letters from "../components/Letters";
 
 function Home() {
   return (
     <>
-      <Header />
       <Send />
+      <Letters />
     </>
   );
 }
