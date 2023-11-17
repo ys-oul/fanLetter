@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+const To = styled.h3`
+  font-family: "Racing Sans One", sans-serif;
+  color: white;
+  font-size: 80px;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+
+  width: 550px;
+  margin: 20px auto;
+`;
+
 const List = styled.li`
   list-style: none;
 `;
@@ -22,11 +32,20 @@ const Avatar = styled.img`
 `;
 
 const Letter = styled.div`
-  margin: 40px 20px;
+  margin: 30px 20px;
   font-size: 15px;
   font-family: "Nanum Gothic", sans-serif;
   color: white;
   text-shadow: 0.5px 0.5px gray;
+`;
+
+const Fan = styled.p`
+  margin-top: 5px;
+`;
+
+const Timestamp = styled.p`
+  margin-top: 10px;
+  font-size: 10px;
 `;
 
 const Content = styled.p`
@@ -37,6 +56,8 @@ const Content = styled.p`
 
   font-weight: bold;
   font-style: italic;
+
+  margin-top: 10px;
 `;
 
-export { List, LetterBox, Avatar, Letter, Content };
+export { To, List, LetterBox, Avatar, Letter, Fan, Timestamp, Content };

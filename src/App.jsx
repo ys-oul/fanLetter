@@ -1,15 +1,20 @@
-import GlobalStyle from "styles/GlobalStyles";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import Detail from "pages/Detail";
+import GlobalStyle from "styles/GlobalStyles.jsx";
+import Home from "./pages/Home.jsx";
+import Detail from "./pages/Detail.jsx";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Header />
-      <Home />
-      {/* <Detail /> */}
+      <BrowserRouter>
+        <Routes>
+          {/* 메인 페이지 */}
+          <Route path="/" element={<Home />} />
+          {/* 디테일 페이지 */}
+          <Route path="/detail" element={<Detail />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

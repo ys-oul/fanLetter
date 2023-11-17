@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import { useLocation } from "react-router";
 import {
+  HomeBtn,
   LetterBox,
   Avatar,
   FanInfo,
@@ -11,25 +14,46 @@ import {
   Btn,
 } from "../styles/DetailStyle.jsx";
 import fakeData from "../fakeData.json";
+import CorModal from "../components/CorModal.jsx";
 
 function Detail() {
-  let date = new Date(Date.parse(fakeData[0].createdAt));
+  const id = useLocation().state.id;
+  const target = fakeData.find((element) => element.id == id);
+  const navigate = useNavigate();
+
+  const [content, setContent] = useState(target.content);
+  const [modal, setModal] = useState(false); //모달창
+  const showModal = () => {
+    setModal(true);
+  };
+
+  let date = new Date(Date.parse(target.createdAt));
   return (
     <>
+      <HomeBtn onClick={() => navigate("/")}>Home</HomeBtn>
       <LetterBox>
         <FanInfo>
-          <Avatar src={fakeData[0].avatar} alt="avatar" />
-          <Name>{fakeData[0].nickname}</Name>
+          <Avatar src={target.avatar} alt="avatar" />
+          <Name>{target.nickname}</Name>
           <LetterDate>{date.toLocaleString()}</LetterDate>
         </FanInfo>
         <LetterContent>
-          <p>To: {fakeData[0].writedTo}</p>
+          <p>To : {target.writedTo}</p>
           <ContentBox>
-            <p>{fakeData[0].content}</p>
+            <p>{content}</p>
           </ContentBox>
         </LetterContent>
         <CorBtns>
-          <Btn>수정</Btn>
+          <Btn onClick={showModal}>수정</Btn>
+          {modal && (
+            <CorModal
+              setModal={setModal}
+              date={date}
+              target={target}
+              content={content}
+              setContent={setContent}
+            />
+          )}
           <Btn>삭제</Btn>
         </CorBtns>
       </LetterBox>

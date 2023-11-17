@@ -23,6 +23,7 @@ const InputName = styled.input`
   padding: 5px;
   border: 1px solid rgb(147, 141, 141);
   border-radius: 7px;
+  font-family: inherit;
 `;
 
 const InputText = styled.textarea`
@@ -32,6 +33,7 @@ const InputText = styled.textarea`
   padding: 5px;
   border: 1px solid rgb(147, 141, 141);
   border-radius: 7px;
+  font-family: inherit;
 `;
 
 const Select = styled.select`
@@ -41,15 +43,17 @@ const Select = styled.select`
   padding: 5px;
   border: 1px solid rgb(147, 141, 141);
   border-radius: 7px;
+  font-family: inherit;
 `;
 
 const Button = styled.button`
   font-weight: bold;
   margin-top: 30px;
   margin-left: 400px;
-  padding: 7px;
+  padding: 10px;
   border: 1px solid rgb(147, 141, 141);
   border-radius: 7px;
+  font-family: inherit;
 `;
 
 export { SendBox, Label, InputName, InputText, Select, Button };

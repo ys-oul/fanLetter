@@ -1,21 +1,7 @@
 import styled from "styled-components";
 
-const HomeBtn = styled.button`
-  width: 100px;
-  height: 45px;
-  margin-top: 50px;
-  margin-left: 80px;
-
-  border: none;
-  border-radius: 7px;
-  background-image: linear-gradient(to bottom, #bda6f6, #64b3ce);
-
-  font-family: "Racing Sans One", sans-serif;
-  font-size: 18px;
-  color: white;
-`;
-
-const LetterBox = styled.div`
+const Container = styled.div`
+  /* 모달창 크기 */
   background-image: linear-gradient(to bottom, #64b3ce, #bda6f6);
   width: 650px;
   height: 390px;
@@ -27,13 +13,41 @@ const LetterBox = styled.div`
   font-family: "Nanum Gothic", sans-serif;
   color: white;
   text-shadow: 1px 1px gray;
+
+  /* 최상단 위치 */
+  z-index: 999;
+
+  /* 중앙 배치 */
+  /* top, bottom, left, right 는 브라우저 기준으로 작동한다. */
+  /* translate는 본인의 크기 기준으로 작동한다. */
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const XBtn = styled.button`
+  position: absolute;
+  right: 20px;
+  top: 15px;
+
+  color: white;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+`;
+
+const LetterBox = styled.div`
+  font-family: "Nanum Gothic", sans-serif;
+  color: white;
+  text-shadow: 1px 1px gray;
 `;
 
 const FanInfo = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr 2fr;
   box-sizing: border-box;
-  margin-top: 5px;
+  margin-top: 3px;
 `;
 
 const Avatar = styled.img`
@@ -67,15 +81,24 @@ const ContentBox = styled.div`
   border: solid 0.7px white;
   border-radius: 10px;
 `;
-
-const CorBtns = styled.div`
+const InputBox = styled.textarea`
   box-sizing: border-box;
-  margin-left: 445px;
+  width: 590px;
+  background-color: transparent;
+  color: white;
+  font-family: inherit;
+  font-size: 15px;
+  border: none;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const Btn = styled.button`
   box-sizing: border-box;
-  margin-left: 10px;
+  margin-left: 515px;
   padding: 10px 25px;
   border: 1.5px solid white;
   border-radius: 7px;
@@ -83,17 +106,23 @@ const Btn = styled.button`
 
   font-weight: bold;
   color: white;
+
+  &:hover {
+    background-color: white;
+    color: #bda6f6;
+  }
 `;
 
 export {
-  HomeBtn,
+  Container,
+  XBtn,
   LetterBox,
-  Avatar,
   FanInfo,
+  Avatar,
   Name,
   LetterDate,
   LetterContent,
   ContentBox,
-  CorBtns,
+  InputBox,
   Btn,
 };

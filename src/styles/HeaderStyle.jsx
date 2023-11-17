@@ -11,7 +11,7 @@ const Nav = styled.div`
 `;
 
 const NavBtn = styled.button`
-  color: white;
+  color: ${(props) => (props.name === props.state ? "yellow" : "white")};
   font-size: 20px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   font-family: "Racing Sans One", sans-serif;
@@ -20,6 +20,10 @@ const NavBtn = styled.button`
   background-color: transparent;
 
   margin: 0px 5px;
+
+  &:hover {
+    color: yellowgreen;
+  }
 `;
 
 const ImgWrap = styled.div`
