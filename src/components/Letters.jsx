@@ -22,15 +22,22 @@ function Letters(props) {
     Karina: "카리나",
     Giselle: "지젤",
   };
+  const allData = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    allData.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+  }
+  console.log(allData);
 
-  const letterList = props.rawData.map((item) => {
+  const letterList = allData.map((item) => {
     if (item.writedTo !== members[lettersTo]) return;
     let date = new Date(Date.parse(item.createdAt));
     return (
       <>
         <List
           key={item.id}
-          onClick={() => navigate("/detail", { state: { id: item.id } })}
+          onClick={() =>
+            navigate("/detail", { state: { id: item.id, data: allData } })
+          }
         >
           <LetterBox>
             <Avatar src={item.avatar} alt="avatar" />

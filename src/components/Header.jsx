@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 
 import fakeData from "../fakeData.json";
+import { v4 as uuidv4 } from "uuid";
+//uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d' id생성
 import headerImg1 from "../shared/aespaHeader.jpg";
 import {
   Nav,
@@ -16,6 +18,11 @@ import Letters from "../components/Letters.jsx";
 
 function Header() {
   const [member, setMember] = useState("Karina");
+
+  // fakeData.forEach((item) => {
+  //   //fakeData LocalStorage에 초기화
+  //   localStorage.setItem(item.id, JSON.stringify(item));
+  // });
 
   return (
     <>
@@ -65,8 +72,8 @@ function Header() {
         <WideImg src={headerImg1} alt="aespa img" />
         <MainHeader>Aespa Fan Letter Collection</MainHeader>
       </ImgWrap>
-      <Send rawData={fakeData} />
-      <Letters selectedMember={member} rawData={fakeData} />
+      <Send selectedMember={member} />
+      {/* <Letters selectedMember={member} /> */}
     </>
   );
 }

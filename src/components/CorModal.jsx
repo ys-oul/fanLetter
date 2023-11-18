@@ -13,6 +13,20 @@ import {
   Btn,
 } from "../styles/CorModalStyle.jsx";
 
+const updateData = (target, content) => {
+  const update = {
+    createdAt: target.createdAt,
+    nickname: target.nickname,
+    avatar: target.avatar,
+    content: content,
+    writedTo: target.writedTo,
+    id: target.id,
+  };
+  console.log(update);
+
+  localStorage.setItem(target.id, JSON.stringify(update));
+};
+
 function CorModal({ setModal, date, target, content, setContent }) {
   const [corrected, setCorrected] = useState(content);
   const inputHandler = (event) => setCorrected(event.target.value);
@@ -20,6 +34,7 @@ function CorModal({ setModal, date, target, content, setContent }) {
   const closeModal = () => {
     setModal(false);
   };
+  console.log(target.id);
 
   return (
     <Container>
@@ -41,7 +56,15 @@ function CorModal({ setModal, date, target, content, setContent }) {
             />
           </ContentBox>
         </LetterContent>
-        <Btn onClick={(setContent(corrected), closeModal)}>수정 완료</Btn>
+        <Btn
+          onClick={() => {
+            setContent(corrected);
+            updateData(target, corrected);
+            closeModal();
+          }}
+        >
+          수정 완료
+        </Btn>
       </LetterBox>
     </Container>
   );

@@ -13,12 +13,18 @@ import {
   CorBtns,
   Btn,
 } from "../styles/DetailStyle.jsx";
-import fakeData from "../fakeData.json";
+
 import CorModal from "../components/CorModal.jsx";
 
+function delHandler(id) {
+  // alert(id);
+  localStorage.removeItem(id);
+}
+
 function Detail() {
-  const id = useLocation().state.id;
-  const target = fakeData.find((element) => element.id == id);
+  const receivedData = useLocation();
+  const id = receivedData.state.id;
+  const target = receivedData.state.data.find((element) => element.id == id);
   const navigate = useNavigate();
 
   const [content, setContent] = useState(target.content);
@@ -44,9 +50,16 @@ function Detail() {
           </ContentBox>
         </LetterContent>
         <CorBtns>
-          <Btn onClick={showModal}>수정</Btn>
+          <Btn
+            onClick={() => {
+              showModal();
+            }}
+          >
+            수정
+          </Btn>
           {modal && (
             <CorModal
+              id={id}
               setModal={setModal}
               date={date}
               target={target}
@@ -54,7 +67,14 @@ function Detail() {
               setContent={setContent}
             />
           )}
-          <Btn>삭제</Btn>
+          <Btn
+            onClick={() => {
+              delHandler(id);
+              navigate("/");
+            }}
+          >
+            삭제
+          </Btn>
         </CorBtns>
       </LetterBox>
     </>
