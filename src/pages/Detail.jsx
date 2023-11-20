@@ -29,6 +29,7 @@ function delBtn(id, navigate) {
 
 function Detail() {
   const receivedData = useLocation();
+  // console.log(receivedData);
   const id = receivedData.state.id;
   const target = receivedData.state.data.find((element) => element.id == id);
   const navigate = useNavigate();

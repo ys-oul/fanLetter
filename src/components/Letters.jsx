@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 
-import fakeData from "../fakeData.json";
+import { SelectedContext } from "../context/SelectedContext";
+
 import {
   To,
   List,
@@ -14,9 +15,11 @@ import {
   NoLetter,
 } from "../styles/LetterStyle.jsx";
 
-function Letters(props) {
+function Letters() {
+  const data = useContext(SelectedContext);
+
   const navigate = useNavigate();
-  const lettersTo = props.selectedMember;
+  const lettersTo = data;
   const members = {
     NingNing: "닝닝",
     Winter: "윈터",
@@ -27,7 +30,7 @@ function Letters(props) {
   for (let i = 0; i < localStorage.length; i++) {
     allData.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
   }
-  console.log(allData);
+  // console.log(allData);
 
   const letterList = allData.map((item) => {
     if (item.writedTo !== members[lettersTo]) return;
@@ -37,7 +40,9 @@ function Letters(props) {
         <List
           key={item.id}
           onClick={() =>
-            navigate("/detail", { state: { id: item.id, data: allData } })
+            navigate("/detail", {
+              state: { id: item.id, data: allData, to: item.writedTo },
+            })
           }
         >
           <LetterBox>

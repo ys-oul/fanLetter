@@ -36,7 +36,7 @@ function CorModal({ setModal, date, target, content, setContent }) {
   };
 
   const corBtnHandler = (target, corContent) => {
-    if (corContent === corrected) {
+    if (corContent === content) {
       alert("수정사항이 없습니다");
       return;
     }

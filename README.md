@@ -9,3 +9,5 @@
 
 https://www.npmjs.com/package//uuid
 사용
+
+**props로 전달되던 \"SelectedMember\"값 context-api로 수정**

@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
-
+import { SelectedContext } from "../context/SelectedContext";
 import fakeData from "../fakeData.json";
-import { v4 as uuidv4 } from "uuid";
-//uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d' id생성
+
 import headerImg1 from "../shared/aespaHeader.jpg";
 import {
   Nav,
@@ -14,7 +13,6 @@ import {
 } from "../styles/HeaderStyle.jsx";
 
 import Send from "../components/Send.jsx";
-import Letters from "../components/Letters.jsx";
 
 function Header() {
   const [member, setMember] = useState("Karina");
@@ -72,8 +70,9 @@ function Header() {
         <WideImg src={headerImg1} alt="aespa img" />
         <MainHeader>Aespa Fan Letter Collection</MainHeader>
       </ImgWrap>
-      <Send selectedMember={member} />
-      {/* <Letters selectedMember={member} /> */}
+      <SelectedContext.Provider value={member}>
+        <Send />
+      </SelectedContext.Provider>
     </>
   );
 }

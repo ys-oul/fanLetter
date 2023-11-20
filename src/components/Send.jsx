@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import {
   SendBox,
   Label,
@@ -12,6 +12,7 @@ import Letters from "../components/Letters.jsx";
 import avatarImg from "../shared/personIcon.png";
 
 import { v4 as uuidv4 } from "uuid";
+import { SelectedContext } from "context/SelectedContext.js";
 //uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d' id생성
 
 const newData = (now, name, content, to) => {
@@ -29,7 +30,7 @@ const newData = (now, name, content, to) => {
   localStorage.setItem(update.id, JSON.stringify(update));
 };
 
-function Send(props) {
+function Send() {
   //userRef 선언
   const nameRef = useRef(null);
   const letterRef = useRef(null);
@@ -89,7 +90,7 @@ function Send(props) {
           </Button>
         </form>
       </SendBox>
-      <Letters selectedMember={props.selectedMember} />
+      <Letters />
     </>
   );
 }
