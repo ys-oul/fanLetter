@@ -60,4 +60,25 @@ const Content = styled.p`
   margin-top: 10px;
 `;
 
-export { To, List, LetterBox, Avatar, Letter, Fan, Timestamp, Content };
+const NoLetter = styled.div`
+  width: 550px;
+  height: 150px;
+  margin: 10px auto;
+
+  font-size: 15px;
+  font-family: "Nanum Gothic", sans-serif;
+  color: white;
+  text-shadow: 0.5px 0.5px gray;
+`;
+
+export {
+  To,
+  List,
+  LetterBox,
+  Avatar,
+  Letter,
+  Fan,
+  Timestamp,
+  Content,
+  NoLetter,
+};

@@ -11,6 +11,7 @@ import {
   Fan,
   Timestamp,
   Content,
+  NoLetter,
 } from "../styles/LetterStyle.jsx";
 
 function Letters(props) {
@@ -55,7 +56,15 @@ function Letters(props) {
   return (
     <>
       <To>{lettersTo}</To>
-      <div>{letterList}</div>
+      {letterList.filter((e) => e !== undefined).length !== 0 ? (
+        <div>{letterList}</div>
+      ) : (
+        <NoLetter>
+          {lettersTo}에게 남겨진 펜레터가 없습니다. 첫 번째 팬레터의 주인공이
+          되주세요!
+        </NoLetter>
+      )}
+      ;
     </>
   );
 }
