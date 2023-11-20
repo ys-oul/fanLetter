@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { SelectedContext } from "../context/SelectedContext";
 import fakeData from "../fakeData.json";
 
 import headerImg1 from "../shared/aespaHeader.jpg";
