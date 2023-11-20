@@ -20,6 +20,12 @@ function delHandler(id) {
   // alert(id);
   localStorage.removeItem(id);
 }
+function delBtn(id, navigate) {
+  if (window.confirm("정말 삭제하시겠습니까?")) {
+    delHandler(id);
+    navigate("/");
+  }
+}
 
 function Detail() {
   const receivedData = useLocation();
@@ -69,8 +75,7 @@ function Detail() {
           )}
           <Btn
             onClick={() => {
-              delHandler(id);
-              navigate("/");
+              delBtn(id, navigate);
             }}
           >
             삭제

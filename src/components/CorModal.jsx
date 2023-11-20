@@ -34,7 +34,16 @@ function CorModal({ setModal, date, target, content, setContent }) {
   const closeModal = () => {
     setModal(false);
   };
-  console.log(target.id);
+
+  const corBtnHandler = (target, corContent) => {
+    if (corContent === corrected) {
+      alert("수정사항이 없습니다");
+      return;
+    }
+    setContent(corContent);
+    updateData(target, corContent);
+    closeModal();
+  };
 
   return (
     <Container>
@@ -58,9 +67,7 @@ function CorModal({ setModal, date, target, content, setContent }) {
         </LetterContent>
         <Btn
           onClick={() => {
-            setContent(corrected);
-            updateData(target, corrected);
-            closeModal();
+            corBtnHandler(target, corrected);
           }}
         >
           수정 완료
