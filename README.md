@@ -11,3 +11,9 @@ https://www.npmjs.com/package//uuid
 사용
 
 **props로 전달되던 \"SelectedMember\"값 context-api로 수정**
+
+<br>
+
+### 리덕스 패키지 사용
+
+yarn add redux react-redux

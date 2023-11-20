@@ -13,14 +13,20 @@ import {
 } from "../styles/HeaderStyle.jsx";
 
 import Send from "../components/Send.jsx";
+import { useDispatch, useSelector } from "react-redux";
 
 function Header() {
-  const [member, setMember] = useState("Karina");
+  // const [member, setMember] = useState("Karina");
 
   // fakeData.forEach((item) => {
   //   //fakeData LocalStorage에 초기화
   //   localStorage.setItem(item.id, JSON.stringify(item));
   // });
+
+  const dispatch = useDispatch(); //dispatch 생성
+  const member = useSelector((state) => {
+    return state.selected.member;
+  });
 
   return (
     <>
@@ -30,36 +36,32 @@ function Header() {
           <ul>
             <NavBtn
               onClick={() => {
-                setMember("NingNing");
+                dispatch({ type: "NINGNING" });
               }}
-              state={member}
               name="NingNing"
             >
               NingNing
             </NavBtn>
             <NavBtn
               onClick={() => {
-                setMember("Winter");
+                dispatch({ type: "WINTER" });
               }}
-              state={member}
               name="Winter"
             >
               Winter
             </NavBtn>
             <NavBtn
               onClick={() => {
-                setMember("Karina");
+                dispatch({ type: "KARINA" });
               }}
-              state={member}
               name="Karina"
             >
               Karina
             </NavBtn>
             <NavBtn
               onClick={() => {
-                setMember("Giselle");
+                dispatch({ type: "GISELLE" });
               }}
-              state={member}
               name="Giselle"
             >
               Giselle
@@ -70,9 +72,7 @@ function Header() {
         <WideImg src={headerImg1} alt="aespa img" />
         <MainHeader>Aespa Fan Letter Collection</MainHeader>
       </ImgWrap>
-      <SelectedContext.Provider value={member}>
-        <Send />
-      </SelectedContext.Provider>
+      <Send />
     </>
   );
 }

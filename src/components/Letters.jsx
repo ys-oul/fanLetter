@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 
-import { SelectedContext } from "../context/SelectedContext";
+import { useSelector } from "react-redux";
 
 import {
   To,
@@ -16,7 +16,9 @@ import {
 } from "../styles/LetterStyle.jsx";
 
 function Letters() {
-  const data = useContext(SelectedContext);
+  const data = useSelector((state) => {
+    return state.selected.member;
+  });
 
   const navigate = useNavigate();
   const lettersTo = data;
